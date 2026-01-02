@@ -9,7 +9,8 @@ public class SmallCalculatorAWT extends Frame implements ActionListener {
     Button[] numButtons = new Button[10];
     Button bAdd, bSub, bMul, bDiv, bEq, bClear;
 
-    SmallCalculatorAWT() {
+    SmallCalculatorAWT()
+    {
         setTitle("AWT Calculator");
         setSize(200, 250); 
         setLayout(new BorderLayout());
@@ -18,18 +19,19 @@ public class SmallCalculatorAWT extends Frame implements ActionListener {
         display = new TextField();
         display.setEditable(false);
         display.setBackground(new Color(255, 255, 200));
-        display.setFont(new Font("Arial", Font.BOLD, 14)); // smaller font
+        display.setFont(new Font("Arial", Font.BOLD, 14)); 
         add(display, BorderLayout.NORTH);
 
         
         Panel buttonPanel = new Panel();
-        buttonPanel.setLayout(new GridLayout(4, 4, 3, 3)); // tighter spacing
+        buttonPanel.setLayout(new GridLayout(4, 4, 3, 3)); 
         buttonPanel.setBackground(new Color(230, 240, 250));
 
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) 
+        {
             numButtons[i] = new Button(String.valueOf(i));
-            numButtons[i].setFont(new Font("Arial", Font.PLAIN, 12)); // smaller button text
+            numButtons[i].setFont(new Font("Arial", Font.PLAIN, 12)); 
             numButtons[i].addActionListener(this);
         }
 
@@ -42,7 +44,8 @@ public class SmallCalculatorAWT extends Frame implements ActionListener {
         bClear = new Button("C");
 
         Button[] ops = {bAdd, bSub, bMul, bDiv, bEq, bClear};
-        for (Button b : ops) {
+        for (Button b : ops) 
+        {
             b.setFont(new Font("Arial", Font.PLAIN, 12));
             b.setBackground(new Color(200, 220, 240));
             b.addActionListener(this);
@@ -57,8 +60,10 @@ public class SmallCalculatorAWT extends Frame implements ActionListener {
         add(buttonPanel, BorderLayout.CENTER);
 
        
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent we) {
+        addWindowListener(new WindowAdapter() 
+        {
+            public void windowClosing(WindowEvent we)
+        {
                 dispose();
             }
         });
@@ -66,21 +71,26 @@ public class SmallCalculatorAWT extends Frame implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent ae) {
+    public void actionPerformed(ActionEvent ae) 
+    {
         String cmd = ae.getActionCommand();
 
         try {
             if (cmd.matches("[0-9]")) {
                 display.setText(display.getText() + cmd);
-            } else if (cmd.equals("+") || cmd.equals("-") || cmd.equals("*") || cmd.equals("/")) {
+            } 
+            else if (cmd.equals("+") || cmd.equals("-") || cmd.equals("*") || cmd.equals("/")) {
                 num1 = Double.parseDouble(display.getText());
                 operator = cmd;
                 display.setText("");
-            } else if (cmd.equals("=")) {
+            } 
+            else if (cmd.equals("=")) 
+            {
                 num2 = Double.parseDouble(display.getText());
                 double result = 0;
 
-                switch (operator) {
+                switch (operator) 
+                {
                     case "+": result = num1 + num2; break;
                     case "-": result = num1 - num2; break;
                     case "*": result = num1 * num2; break;
@@ -108,3 +118,4 @@ public class SmallCalculatorAWT extends Frame implements ActionListener {
         new SmallCalculatorAWT();
     }
 }
+
